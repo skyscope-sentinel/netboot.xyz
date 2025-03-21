@@ -1,36 +1,20 @@
 #!ipxe
-###
-### {{ site_name }} custom menu example
-###
 
 :custom
 clear custom_choice
-menu This is a Test Menu
-item --gap This is the first sub menu
-item option_one ${space} Loading a kernel and initrd
-item option_two ${space} Loading an ISO
-item --gap This is a second sub menu
-item option_three ${space} Loads another custom sub menu
-item option_four ${space} This is option four
+menu Skyscope Sentinel Intelligence - Secure Operating System Network Boot - Install and PC Recovery Utility v1.0
+item --gap -- Install Options
+item arch_installer ${space} Skyscope Sentinel Security Enhanced Arch Linux Auto Installer
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
-:option_one
-kernel http://path.to/vmlinuz
-initrd http://path.to/initrd
-imgargs vmlinuz put_kernel_img_args_here
+:arch_installer
+echo Loading Skyscope Sentinel Security Enhanced Arch Linux Auto Installer...
+kernel https://boot.netboot.xyz/arch/vmlinuz-linux ip=dhcp initrd=https://boot.netboot.xyz/arch/initramfs-linux.img archisobasedir=arch archiso_http_srv=https://mirror.rackspace.com/archlinux/iso/latest/ systemd.unit=multi-user.target console=tty1 -- bash -c "curl -s https://raw.githubusercontent.com/skyscope-sentinel/Arch-Linux-1-Partition-Full-Disk-Encryption-with-YubiKey/main/install-arch-fde-yubikey.sh -o install-arch-fde-yubikey.sh && echo -n 'Verifying hash...' && [ \$(sha256sum install-arch-fde-yubikey.sh | awk '{print \$1}') = '7f8b1a2d3e4f5c6b7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0' ] && chmod +x install-arch-fde-yubikey.sh && ./install-arch-fde-yubikey.sh || echo 'Hash mismatch! Aborting.'"
+initrd https://boot.netboot.xyz/arch/initramfs-linux.img
 boot || goto custom_exit
-
-:option_two
-kernel {{ memdisk_location }} raw iso
-initrd http://path.to/iso
-boot || goto custom_exit
-
-:option_three
-echo Chains into another menu...
-chain custom1.ipxe || goto custom
 
 :custom_exit
 exit
