@@ -3,7 +3,46 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.0.87] - 2025-00-00
+## [2.0.89] - Unreleased
+
+## [2.0.88] - 2025-08-09
+
+### Added
+
+- CachyOS live distribution with archiso boot configuration
+- Ubuntu Spins distribution template for Ubuntu flavor variants  
+- Debian 13 (Trixie) net installer
+- Rocky Linux 10 and AlmaLinux 10 
+- Flatcar Container Linux ARM64 architecture support
+- Proxmox VE 9.0
+- Dasharo Tools Suite updated to v2.6.0
+- SystemRescue archiso_pxe_http initrd support
+
+### Changed
+
+- FreeDOS updated to v1.4 with corrected URLs
+- Various distribution version updates and endpoint refreshes
+- Improved MAC address handling in TFTP boot configuration
+
+### Fixed
+
+- Fedora CoreOS kernel filename format corrected
+
+### Removed
+
+- Deepin distribution completely removed from the system
+
+## [2.0.87] - 2025-05-08
+
+### Added
+
+- Fedora Onyx build
+- Kali arm64 Added
+
+### Changed
+
+- Various version updates
+- Cleanup of older distros from endpoints
 
 ## [2.0.86] - 2025-03-13
 
